@@ -3,9 +3,9 @@ package com.ufmg.pedagio.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ufmg.pedagio.model.entity.CategoriaEntity;
+import com.ufmg.pedagio.model.entity.StatusEntity;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<CategoriaEntity, Integer>{
+public interface StatusRepository extends JpaRepository<StatusEntity, Integer>{
 
 }
