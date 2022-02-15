@@ -2,6 +2,7 @@ package com.ufmg.pedagio.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class PedagioEntity implements Serializable{
 	@Column(name="NM_PEDAGIO")
 	private Integer numeroPedagio;
 	
-	@OneToOne(mappedBy ="pedagio")
+	@OneToOne(mappedBy ="pedagio",cascade=CascadeType.ALL)
 	private LoggerEntity loggerEntity;
 
 	public Integer getIdPedagio() {

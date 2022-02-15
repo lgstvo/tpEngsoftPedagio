@@ -26,22 +26,26 @@ public class LoggerUtils {
 	private LoggerRepository loggerRepository;
 	
 	public void saveLoggerSucces() {
-		LoggerEntity logger = new LoggerEntity();
+		LoggerEntity logger = new LoggerEntity(); 
 		PedagioEntity pedagioEntity = pedagioUtils.recuperatePedagioInfo();
-		pedagioRepository.save(pedagioEntity);
-		logger.setPedagio(pedagioEntity);
 		logger.setNumeroPedagio(new Date());
 		logger.setStatus(statusUtils.generateStatusSuccess());
+		pedagioEntity.setLoggerEntity(logger);
+		PedagioEntity newPedagio = pedagioRepository.save(pedagioEntity);
+		pedagioEntity.setIdPedagio(newPedagio.getIdPedagio());
+		logger.setPedagio(pedagioEntity);
 		loggerRepository.save(logger);
 	}
 	
 	public void saveLoggerFail() {
 		LoggerEntity logger = new LoggerEntity();
 		PedagioEntity pedagioEntity = pedagioUtils.recuperatePedagioInfo();
-		pedagioRepository.save(pedagioEntity);
-		logger.setPedagio(pedagioEntity);
 		logger.setNumeroPedagio(new Date());
 		logger.setStatus(statusUtils.generateStatusError());
+		pedagioEntity.setLoggerEntity(logger);
+		PedagioEntity newPedagio = pedagioRepository.save(pedagioEntity);
+		pedagioEntity.setIdPedagio(newPedagio.getIdPedagio());
+		logger.setPedagio(pedagioEntity);
 		loggerRepository.save(logger);
 	}
 }
